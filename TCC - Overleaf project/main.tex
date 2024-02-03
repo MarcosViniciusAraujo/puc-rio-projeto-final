@@ -1,0 +1,237 @@
+%% -*- coding: utf-8; -*-
+
+% Use 'digital' option to enable back references. This option is recommended for digital pdf version
+%\documentclass[phd,american,digital]{thesispuc}%english thesis
+%\documentclass[mscr,american]{thesispuc}%english dissertation
+%\documentclass[phd,brazilian]{thesispuc}%tese em portugês
+\documentclass[msc,brazilian]{thesispuc}%disseretação em portuguŝ
+
+
+%%%
+%%% Additional Packages
+%%%
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{colortbl}
+\usepackage[%
+    dvipsnames,
+    svgnames,
+    x11names,
+    fixpdftex,
+    table
+]{xcolor}
+\usepackage{numprint}
+\usepackage{textcomp}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage{amssymb}
+
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{caption}
+
+% ABNT reference style package. The current style is the alphabetical order, if you need
+% change to citation order, change in the line above 'alf' to 'num', also at the end replace
+% bibliographystyle with the commented version.
+\usepackage[alf,bibjustif,abnt-emphasize=bf]{abntex2cite}
+%\usepackage{tikz}
+%\usepackage[linesnumbered, ruled, vlined]{algorithm2e}
+%\usepackage{pgfplots,pgfplotstable} 
+%\usepackage{array}
+
+%% numprint 
+\npthousandsep{.}
+\npdecimalsign{,}
+
+%% ThesisPUC option
+%\tablesmode{fig} %% [nada, fig, tab ou figtab]
+%\algoritmsmode{none} %% [none ou use] %% Default is [use]
+%\codesmode{none} %% [none ou use] %% Default is [use]
+%\abreviationsmode{none} %% [none ou use] %% Default is [use]
+
+% \makeatletter  \renewcommand\@biblabel[1]{#1}  \makeatother
+
+%%%
+%%% Counters
+%%%
+
+%% uncomment and change for other depth values
+\setcounter{tocdepth}{1}
+%\setcounter{lofdepth}{3}
+%\setcounter{lotdepth}{3}
+%\setcounter{secnumdepth}{3}
+
+%%%
+%%% Misc.
+%%%
+
+\usecolour{true}
+
+
+%%%
+%%% Titulos
+%%%
+
+\author{Marcos Vinicius Araujo Almeida}
+\authorR{Araujo Almeida, Marcos Vinicius} % full name
+
+\advisor{Augusto César Espíndola Baffa}{Prof.} %Name LastName
+\advisorR{Baffa, Augusto} %LastName, Name
+% If the advisor's department is different from author's department, uncomment the next line and type the correct name and acronym of advisor's institution.
+%\advisorInst{institution name}{acronym}
+
+%\coadvisor{Otávio da Fonseca Martins Gomes}{Dr.}
+%\coadvisorR{da Fonseca Martins Gomes, Otávio}
+%\coadvisorInst{Centro de Tecnologia Mineral}{CETEM/MCTI}
+
+\title{Deep Learning para exames médicos de imagem} %title in portuguese
+
+\titleuk{Deep Learning for Medical Imaging Examinations} %title in english
+
+%%\subtitulo{Aqui vai o subtitulo caso precise}
+
+\day{11}
+\month{Novembro}
+\year{2023}
+
+\city{Rio de Janeiro}
+\CDD{004} 
+\department{Informática}
+\program{\mbox{Engenharia} da \mbox{Computação}}
+\school{\mbox{Engenharia} da \mbox{Computação}}
+\university{Pontifícia Universidade Católica do Rio de Janeiro}
+\uni{PUC-Rio}
+
+
+%%%
+%%% Jury
+%%%
+
+\jury{%
+  \jurymember{Luís Fernando Teixeira Bicalho}{Prof.}
+    {Departamento de Informática}{PUC-Rio}
+  \jurymember{Luiz Fernando Bessa Seibel}{Prof.}
+    {Departamento de Informática}{PUC-Rio}
+}
+
+
+%%%
+%%% Personal Resume
+%%%
+
+\resume{%
+% If it fit in one line use this command:
+\makebox[\textwidth][s]{Graduando em Engenharia da Computação na PUC-Rio.}%
+% If not just type your resume without any special command 
+}
+
+%%%
+%%% Acknowledgment (REMINDER TO SCHOLARSHIP STUDENTS. Do not forget to thank the agencies that supported your work.)
+%%%
+\acknowledgment{%
+\noindent Para meu orientador Augusto Baffa, por conduzir por todos os caminhos e me ajudar a montar essa tese.
+\bigskip
+
+\noindent Para minha mãe, que sempre deu todo seu suor e esforço para fornecer a melhor educação possível para mim.
+\bigskip
+
+\noindent Para minha madrinha, meia-irmã e todas as outras pessoas que participaram da minha criação, contribuindo para oque eu sou hoje.
+\bigskip
+
+\noindent Agradeço a PUC-Rio pela oportunidade de ser bolsista integral.
+\bigskip
+
+\noindent Agradeço a todos os amigos que conheci durante esses 5 anos de faculdade pelo suporte e apoio.
+
+
+
+}
+
+
+%%%
+%%% Catalog prekeywords
+%%%
+
+\catalogprekeywords{%
+  \catalogprekey{Informática}%
+}
+
+%%%
+%%% Keywords - Don't use % at the end of /key dfinition
+%%%
+
+\keywords{%
+  \key{Aprendizado Profundo}
+  \key{Redes Neurais de Convolução}
+  \key{Imagens de Exames médicos}
+  \key{Pneumonia}
+  \key{InceptionV3}
+  \key{ResNet50}
+  
+}
+
+\keywordsuk{%
+  \key{Deep Learning}
+  \key{Convolution Neural Networks}
+  \key{Medical Imaging}
+  \key{Pneumonia}
+  \key{InceptionV3}
+  \key{ResNet50}
+}
+
+%%%
+%%% Abstract
+%%%
+
+\abstract{%
+As Redes Neurais Convolucionais (CNNs) representam um avanço significativo no campo de imagens médicas, redefinindo os métodos de diagnóstico e análise. Sua eficácia se destaca na identificação e classificação de anormalidades, facilitando a detecção precoce de condições como câncer, lesões cerebrais e problemas cardíacos. Nessa tese,  foram comparados modelos baseados em CNNs para determinar o mais eficiente na tarefa de classificar imagens de raio-X pulmonares, com o objetivo de diagnosticar a presença ou ausência de pneumonia. Este trabalho destacou o potencial das CNNs em aplicações práticas, evidenciando sua relevância e eficácia no diagnóstico médico por imagem.
+}
+
+\abstractuk{%
+Convolutional Neural Networks (CNNs) represent a significant advancement in the field of medical imaging, redefining diagnostic and analytical methods. Their effectiveness is particularly notable in the identification and classification of abnormalities, promoting the early detection of conditions such as cancer, brain injuries, and cardiac issues. In this thesis, CNN-based models were compared to decide the most efficient one for the task of classifying pulmonary X-ray images, aimed at diagnosing the presence or absence of pneumonia. This work highlighted the potential of CNNs in practical applications, underscoring their relevance and efficacy in image-based medical diagnosis.
+}
+
+%%%
+%%% Dedication
+%%%
+
+\dedication{%
+Para a minha mãe e minha madrinha, pelo seu suporte e encorajamento.
+}
+
+%%%
+%%% Epigraph
+%%%
+
+%\epigraph{%
+%  Not all those who wander are lost
+%}
+%\epigraphauthor{ J.R.R. Tolkien}
+%\epigraphbook{The Fellowship of the Ring}
+
+\epigraph{%
+  Nah, I'd win.
+}
+\epigraphauthor{Satoru Gojo}
+\epigraphbook{Jujutsu Kaisen}
+
+
+
+
+
+\begin{document}
+  \input{1-intro} 
+  \input{2-sit_atual} 
+  \input{3-objetivos}
+  \input{4-atividades}
+  \input{5-proj_espec}
+  \input{6-implement_aval}
+  \input{7-consideracoes}
+  %% ...
+  \arial
+  \bibliographystyle{abnt-alf} % \bibliographystyle{abnt-num}
+  \bibliography{main} 
+\end{document}
+

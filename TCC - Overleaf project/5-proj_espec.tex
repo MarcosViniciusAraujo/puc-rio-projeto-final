@@ -1,0 +1,44 @@
+\chapter{Projeto e Especificação do Sistema}
+\label{cha:Projeto e Especificação do Sistema}
+
+Nesse capítulo serão abordadas mais informações sobre as bibliotecas necessárias para criação e treinamento dos modelos, detalhando cada uma de suas funções e métodos utilizados. Será apresentado também uma descrição detalhada do dataset utilizado para o treinamento como também seus metadados.
+
+\section{Bibliotecas}
+
+Para a confecção do projeto, foram utilizadas uma série de bibliotecas para a criação, teste, otimização e avaliação dos modelos de rede neural. 
+
+\lstinputlisting[label=process,title={Bibliotecas utilizadas},caption={Bibliotecas utilizadas},language=Python]{codes/imports.py}
+
+Primeiramente, \textbf{Matplotlib} e \textbf{Seaborn} são usadas para criar gráficos e visualizações. \textbf{Matplotlib} é a escolha tradicional para gráficos estáticos e interativos, enquanto Seaborn oferece uma abordagem mais estilizada para visualizações de dados.
+
+O \textbf{Keras}, operando em cima da biblioteca \textbf{TensorFlow}, é uma API de alto nível para construir e treinar modelos de aprendizado profundo. Com essa biblioteca, é possível empilhar camadas de redes neurais usando o modelo \verb|Sequential| e adicionar uma variedade de camadas como \verb|Dense| para conexões densas, \verb|Conv2D| para convolução em dados de imagem, \verb|MaxPool2D| para pooling, \verb|Flatten| para achatar as dimensões dos dados, \verb|Dropout| para reduzir o overfitting e \verb|BatchNormalization| para normalizar as ativações dos neurônios. O \verb|ImageDataGenerator| é uma ferramenta poderosa para aumentar o conjunto de dados de imagem e melhorar o desempenho do modelo. Além disso, o \verb|ReduceLROnPlateau| é um callback que ajusta a taxa de aprendizado durante o treinamento para otimizar o processo.
+
+O pacote \textbf{Scikit-learn} foi empregado para dividir o conjunto de dados em treino e teste com \verb|train_test_split| e avaliar o desempenho do modelo com métricas como \verb|classification_report| e \verb|confusion_matrix|, além de fornecer uma visualização clara do desempenho com \verb|ConfusionMatrixDisplay|. Vale ressaltar que a versão utilizada do pacote (2.1) ainda não possuia o método ConfusionMatrixDisplay, foi usado o pandas alido com o seaborn para fazer tal visualização.
+
+É importante dizer que o \textbf{TensorFlow} é a base sobre a qual o Keras é construído, e o \textit{backend} do \textbf{Keras} permite operações de baixo nível que são independentes da plataforma, o que significa que é possível escrever código que é compatível com diferentes frameworks de aprendizado de máquina.
+
+O \textbf{OpenCV} é uma biblioteca robusta para processamento de imagens e visão computacional, que permite manipular e processar imagens para tarefas como reconhecimento facial ou detecção de objetos, nesse caso, aplicado para leitura e carregamento dos conjuntos de dados. O módulo \textbf{os} foi utilizado para interagir com o sistema de arquivos do sistema operacional, permitindo operações como a leitura e escrita de arquivos.
+
+Juntas, essas bibliotecas e funções formam um ecossistema completo para o desenvolvimento de projetos de aprendizado de máquina, desde a preparação e visualização de dados até a construção, treinamento e avaliação de modelos complexos, nesse caso, relacionados ao processamento de imagens médicas.
+
+
+\section{Análise do Dataset}
+
+
+Esta tese apresenta redes neurais projetadas para determinar a presença de pneumonia a partir de radiografias torácicas. Essas imagens de raio-X (anterior-posterior) foram selecionadas de retrospectivas de pacientes pediátricos de um a cinco anos de idade do Centro Médico de Mulheres e Crianças de Guangzhou, China, sendo todas elas parte de um atendimento clínico de rotina.
+
+Para a análise das imagens de raio-X, todas as radiografias foram inicialmente examinadas para controle de qualidade, removendo todas as varreduras de baixa qualidade. Os diagnósticos para as imagens foram então classificados por dois médicos especialistas antes de serem liberados para treinar o sistema de IA. A fim de levar em conta quaisquer erros de classificação, o conjunto de avaliação também foi verificado por um terceiro especialista. 
+
+O conjunto de dados usado para treinar e testar essas redes pode ser obtido no Kaggle sob o nome \href{https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia/data}{"\textbf{Chest X-Ray Images (Pneumonia)}"}, ou no próprio artigo onde utilizaram esse dataset \cite{Kermany2018}. No total existem 5866 imagens, que estão divididas em três diretórios distintos:
+
+\begin{enumerate}
+    \item \textit{\textbf{test}}: Representando o conjunto de dados para testagem do modelo após ter sido treinado, contendo 234 imagens de pulmões saudáveis e 390 com pneumonia. 
+
+    \item \textit{\textbf{train}}: Representando o conjunto de imagens que serão utilizadas para o treinamento do modelo, contendo 1351 imagens de pulmões saudáveis e 3875 imagens de pulmões que contrairam a doença.
+
+    \item \textit{\textbf{val}}: Representando as imagens que serão utilizadas durante o treinamento do modelo, não para ajustar os pesos do modelo, e sim para servir como uma espécie de validação das previsões, monitorando a aprendizagem e generalização do modelo, ajudando a indentificar problemas como overfitting. Nesse caso um volume menor de imagens, com 8 de cada categoria.
+    
+\end{enumerate}
+
+
+É importante ressaltar também que as imagens encontradas nessa base estão no formato \verb|.jpeg|, na escala de cores cinza e elas não possuem um tamanho fixo.

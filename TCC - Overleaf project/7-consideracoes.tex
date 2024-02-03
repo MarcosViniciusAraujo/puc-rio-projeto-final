@@ -1,0 +1,20 @@
+\chapter{Considerações Finais}
+\label{cha:Considerações Finais}
+
+Como lido anteriormente, a questão do uso de inteligência artificial aplicada na área de imagens médicas é um ganho positivo para profissionais de saúde. Existindo um modelo pré-treinado é possível: 
+
+\begin{enumerate}
+    \item  Melhorar a precisão do diagnóstico, podendo analisar imagens com padrões de doença sutis demais para detecção humana, como citada na introdução o caso da detecção do cancer de mama 5 anos antes de se formar completamente.
+    \item Reduzir tempo de diagnósticos, analisando grandes volumes de dados de imagem rapidamente, tornado-se crucial para situações de emergência.
+    \item Minimizar erros humanos que podem ocorrer devido á fadiga viés ou simplesmente limitações humanas na interpretação de imagens complexas.
+\end{enumerate}
+
+Com os modelos testados nessa tese, foi possível chegar à um resultado bem positivo de acurácia, mesmo tendo uma base de dados completamente enviesada para casos de pneumonia. O modelo que se mais destacou foi o \textbf{InceptionV3} aliado com o otimizador \textbf{Adam}, apresentando uma acurácia de 95.19\%, com pequenas incidências de erros.  
+
+Para os próximos passos do projeto, seria possível treinar os modelos (CNN, ResNet50 e InceptionV3) em uma base balaceada entre as classes de pneumonia e saudável, gerando uma confiabilidade maior no modelo e por consequência diminuindo as ocorrências de falsos negativos nos resultados. Seria possível também, aplicar a mesma lógica de classificação à outros de tipos de casos como doenças oculares, cardíacas, ósseas/musculares e até mesmo para detecção de tumores.  
+
+Embora os benefícios sejam consideráveis, substituir médicos e profissionais da saúde exclusivamente por inteligências artificiais não é viável. Isso ocorre porque, apesar da menor incidência de erros, esses modelos ainda são suscetíveis a equívocos ocasionais. Como ilustrado pelas matrizes de confusão no capítulo anterior, mesmo reduzindo ao máximo os casos de falsos negativos, houve 22 pacientes que correram o risco de receber um diagnóstico falso de não terem pneumonia, quando na verdade a possuíam. Erros desse tipo podem ameaçar a vida dos pacientes e de outros.
+
+Dessa forma, é fundamental reconhecer o papel insubstituível da experiência humana e do julgamento clínico na área da saúde. A inteligência artificial deve ser vista como uma ferramenta poderosa que pode melhorar a eficiência e a precisão dos diagnósticos, mas sempre complementando e trabalhando em conjunto com as habilidades e conhecimentos dos profissionais de saúde. O equilíbrio entre tecnologia e atendimento humano é essencial para garantir uma assistência médica de alta qualidade, centrada no paciente e adaptada às complexidades e variabilidades inerentes ao campo da saúde. 
+
+
